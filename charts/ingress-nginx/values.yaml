@@ -1112,3 +1112,9 @@ portNamePrefix: ""
 # This can be generated with: `openssl dhparam 4096 2> /dev/null | base64`
 ## Ref: https://github.com/kubernetes/ingress-nginx/tree/main/docs/examples/customization/ssl-dh-param
 dhParam: ""
+
+# -- (string) Specify cloud provider which will be used to install chart
+# eg GCP, AWS, Azure ...
+# Some configuration like appProtocol is differet for GCP cloud
+## Ref: https://cloud.google.com/kubernetes-engine/docs/how-to/secure-gateway
+cloudProvider: ""
