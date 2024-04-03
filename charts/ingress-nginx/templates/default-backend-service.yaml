@@ -32,8 +32,12 @@ spec:
       port: {{ .Values.defaultBackend.service.servicePort }}
       protocol: TCP
       targetPort: http
-    {{- if semverCompare ">=1.20" .Capabilities.KubeVersion.Version }}
+    {{- if semverCompare ">=1.20.0-0" .Capabilities.KubeVersion.Version }}
+      {{- if eq .Values.cloudProvider "GCP" }}
+      appProtocol: HTTP
+      {{- else }}
       appProtocol: http
+      {{- end }}
     {{- end }}
   selector:
     {{- include "ingress-nginx.selectorLabels" . | nindent 4 }}
